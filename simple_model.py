@@ -76,8 +76,9 @@ class DCGAN():
         model = Sequential()
 
         # Model architecture from https://arxiv.org/abs/1511.06434
-        model.add(Dense(128 * 7 * 7, activation=self.g_activation,
+        model.add(Dense(output_dim=128 * 7 * 7,
                         input_dim=self.latent_dim))
+        model.add(Activation(self.g_activation))
         model.add(Reshape((7, 7, 128)))
         model.add(UpSampling2D())
         model.add(Conv2D(128, kernel_size=3, padding="same"))
