@@ -122,7 +122,8 @@ class DCGAN():
         model.add(LeakyReLU(alpha=0.2))
         model.add(Dropout(0.25))
         model.add(Flatten())
-        model.add(Dense(1, activation=self.d_activation))
+        model.add(Dense(1))
+        model.add(Activation(self.d_activation))
 
         model.summary()
 
